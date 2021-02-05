@@ -1,7 +1,15 @@
+.app {
+    background-image: url("images/backgroundMain.png");
+    height: 120vh;
+}
+
 .main {
     text-align: center;
-    margin: 50px auto;
-    border: 3px solid black;
+    position: relative;
+    top: 10%;
+    color: white;
+    margin: 0 auto;
+    border: 3px solid white;
     border-radius: 20px;
     width: 240px;
 }
