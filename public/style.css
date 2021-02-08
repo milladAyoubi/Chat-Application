@@ -9,10 +9,11 @@
 .main {
     text-align: center;
     position: relative;
-    top: 10%;
+    top: 43%;
     color: white;
     margin: 0 auto;
-    border: 3px solid white;
     border-radius: 20px;
-    width: 240px;
+    position: relative;
+    height: 1000px;
+    width: 1200px;
 }
