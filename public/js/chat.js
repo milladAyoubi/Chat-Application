@@ -14,14 +14,15 @@ socket.on('welcomeMessage', (message) => {
 })
 
 
+const messageDisplay = document.querySelector('#messageDisplay')
 socket.on('message', (send) => {
-    console.log(send)
+    messageDisplay.innerHTML = send
 })
 
 
 
 
-const display = document.querySelector('#countDisplay')
+/*const display = document.querySelector('#countDisplay')
 
 //Button That Initiates Serverside and Client Side Exchange
 document.querySelector('#increment').addEventListener('click', () => {
@@ -29,7 +30,7 @@ document.querySelector('#increment').addEventListener('click', () => {
         //Runs increment event on serverSide
     socket.emit('increment')
 
-})
+})*/
 
 
 document.querySelector('#messageForm').addEventListener('submit', (e) => {
