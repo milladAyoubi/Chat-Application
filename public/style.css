@@ -16,5 +16,15 @@
     border-radius: 20px;
     position: relative;
     width: 600px;
-    height: 550px;
+    height: 350px;
+}
+
+.input1 {
+    position: relative;
+    top: 100%;
+}
+
+.input1 input {
+    border-radius: 20px;
+    border: none;
 }

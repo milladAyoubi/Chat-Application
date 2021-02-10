@@ -31,6 +31,12 @@ io.on('connection', (socket) => {
         socket.emit('countUpdated', count)
 
 
+
+    })
+
+    socket.on('messageSent', (send) => {
+        io.emit('message', send)
+
     })
 })
 
