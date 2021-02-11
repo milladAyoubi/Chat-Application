@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
     console.log('New WebSocket connection')
         //Sending event to client 
     socket.emit('welcomeMessage', message)
+    socket.broadcast.emit('newUser', 'A New User Has Joined!')
         //Reciveing Increment from client side
     socket.on('increment', () => {
         count++
@@ -37,6 +38,10 @@ io.on('connection', (socket) => {
     socket.on('messageSent', (send) => {
         io.emit('message', send)
 
+    })
+
+    socket.on('disconnect', () => {
+        io.emit('leftUser', 'A User Has Left!')
     })
 })
 

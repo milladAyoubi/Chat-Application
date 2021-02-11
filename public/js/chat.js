@@ -7,6 +7,16 @@ socket.on('countUpdated', (count) => {
     display.innerHTML = 'Button Has Been Click ' + count
 })
 
+const userDisplay = document.querySelector('#userDisplay')
+socket.on('newUser', (message) => {
+    userDisplay.innerHTML = message
+})
+
+socket.on('leftUser', (message) => {
+    userDisplay.innerHTML = message
+    userDisplay.classList.add('.leave')
+
+})
 
 socket.on('welcomeMessage', (message) => {
     const title = document.querySelector('#title')
@@ -27,8 +37,7 @@ socket.on('message', (send) => {
 //Button That Initiates Serverside and Client Side Exchange
 document.querySelector('#increment').addEventListener('click', () => {
     console.log('Clicked')
-        //Runs increment event on serverSide
-    socket.emit('increment')
+        //Runs incremen ement')
 
 })*/
 
