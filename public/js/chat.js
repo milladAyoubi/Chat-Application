@@ -30,7 +30,11 @@ socket.on('message', (send) => {
 })
 
 
+/*documnet.querySelector('#sendLocation').addEventListener('click', () => {
+    if (!navigator.geolocation)
+        return alert('Geolocation is not ')
 
+})*/
 
 /*const display = document.querySelector('#countDisplay')
 
