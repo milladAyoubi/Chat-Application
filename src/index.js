@@ -2,6 +2,7 @@ const path = require('path')
 const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
+const { createBrotliDecompress } = require('zlib')
 
 
 
@@ -40,10 +41,16 @@ io.on('connection', (socket) => {
 
     })
 
+
+    socket.on('location', (coords) => {
+        io.emit('leftUser', 'Location -> Lat: ' + coords.latitude + ' Long: ' + coords.latitude)
+    })
+
     socket.on('disconnect', () => {
         io.emit('leftUser', 'A User Has Left!')
     })
 })
+
 
 server.listen(port, () => {
     console.log(`Server is up on port ${port}!`)

@@ -30,11 +30,19 @@ socket.on('message', (send) => {
 })
 
 
-/*documnet.querySelector('#sendLocation').addEventListener('click', () => {
+document.querySelector('#sendLocation').addEventListener('click', () => {
     if (!navigator.geolocation)
-        return alert('Geolocation is not ')
+        return alert('Geolocation is not Supported')
 
-})*/
+    navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position)
+        socket.emit('location', {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+        })
+    })
+
+})
 
 /*const display = document.querySelector('#countDisplay')
 
