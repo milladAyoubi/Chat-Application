@@ -2,8 +2,7 @@ const path = require('path')
 const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
-const { createBrotliDecompress } = require('zlib')
-
+const Filter = require('bad-words')
 
 
 //Connecting Server
@@ -29,15 +28,20 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('newUser', 'A New User Has Joined!')
         //Reciveing Increment from client side
     socket.on('increment', () => {
-        count++
-        socket.emit('countUpdated', count)
+            count++
+            socket.emit('countUpdated', count)
 
 
 
-    })
+        })
+        //Receiveing, Confirming and Displaying User messages sent from client
+    socket.on('messageSent', (message, callback) => {
+        const filter = new Filter()
 
-    socket.on('messageSent', (send, callback) => {
-        io.emit('message', send)
+
+        if (filter.isProfane(message))
+            return callback('Bitch No Swearing')
+        io.emit('message', message)
         callback('Received Message On Server')
 
     })
