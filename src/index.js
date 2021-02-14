@@ -36,8 +36,9 @@ io.on('connection', (socket) => {
 
     })
 
-    socket.on('messageSent', (send) => {
+    socket.on('messageSent', (send, callback) => {
         io.emit('message', send)
+        callback('Received Message On Server')
 
     })
 

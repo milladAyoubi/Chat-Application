@@ -57,6 +57,8 @@ document.querySelector('#increment').addEventListener('click', () => {
 document.querySelector('#messageForm').addEventListener('submit', (e) => {
     e.preventDefault()
     const send = document.querySelector('#text').value
-    socket.emit('messageSent', send)
+    socket.emit('messageSent', send, (confirmation) => {
+        console.log('Message Delivered', confirmation)
+    })
 
 })
