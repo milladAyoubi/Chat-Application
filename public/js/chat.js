@@ -28,8 +28,11 @@ socket.on('welcomeMessage', (message) => {
 
 
 const messageDisplay = document.querySelector('#messageDisplay')
+
+let fullScript = ''
 socket.on('message', (send) => {
-    messageDisplay.innerHTML = send
+    fullScript = fullScript + send + '<br>'
+    messageDisplay.innerHTML = fullScript
 })
 
 

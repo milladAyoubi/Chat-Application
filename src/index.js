@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
 
         if (filter.isProfane(message))
             return io.emit('message', 'Hey No Swearing!')
-
+        message = message + "\n"
         io.emit('message', message)
         callback('Received Message On Server')
 

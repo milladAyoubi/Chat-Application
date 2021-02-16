@@ -18,6 +18,10 @@
     height: 300px;
 }
 
+.messageDisplay {
+    text-align: left;
+}
+
 .input1 {
     position: relative;
     top: 50%;
