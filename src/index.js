@@ -40,7 +40,8 @@ io.on('connection', (socket) => {
 
 
         if (filter.isProfane(message))
-            return callback('Hey No Swearing!')
+            return io.emit('message', 'Hey No Swearing!')
+
         io.emit('message', message)
         callback('Received Message On Server')
 
