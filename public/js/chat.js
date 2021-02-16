@@ -2,6 +2,9 @@
 
 const socket = io()
 
+
+//Elements 
+
 socket.on('countUpdated', (count) => {
     console.log('Count has been updated', count)
     display.innerHTML = 'Button Has Been Click ' + count
@@ -53,12 +56,28 @@ document.querySelector('#increment').addEventListener('click', () => {
 
 })*/
 
+const messageForm = document.querySelector('#messageForm')
+const messageFormButton = messageForm.querySelector('button')
 
 document.querySelector('#messageForm').addEventListener('submit', (e) => {
     e.preventDefault()
-    const send = document.querySelector('#text').value
-    socket.emit('messageSent', send, (confirmation) => {
-        console.log('Message Delivered', confirmation)
-    })
+    messageFormButton.setAttribute('disabled', 'disabled')
+    messageFormButton.removeAttribute('disabled')
+    const send = document.querySelector('#text')
+
+
+    if (send.value != '') {
+
+        socket.emit('messageSent', send.value, (error) => {
+
+            send.value = ''
+
+
+            if (error)
+                return console.log(error)
+
+            console.log('Message Delivered')
+        })
+    }
 
 })
