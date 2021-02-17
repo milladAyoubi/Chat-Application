@@ -21,9 +21,6 @@ socket.on('leftUser', (message) => {
 
 })
 
-socket.on('locationMessage', (location) => {
-    console.log(location)
-})
 
 socket.on('welcomeMessage', (message) => {
     const title = document.querySelector('#title')
@@ -32,13 +29,18 @@ socket.on('welcomeMessage', (message) => {
 
 
 const messageDisplay = document.querySelector('#messageDisplay')
-
 let fullScript = ''
+
 socket.on('message', (send) => {
     fullScript = fullScript + send + '<br>'
     messageDisplay.innerHTML = fullScript
 })
 
+socket.on('locationMessage', (location) => {
+    fullScript = fullScript + location + '<br>'
+    messageDisplay.innerHTML = fullScript
+    console.log(location)
+})
 
 document.querySelector('#sendLocation').addEventListener('click', () => {
     if (!navigator.geolocation)
