@@ -3,7 +3,7 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const Filter = require('bad-words')
-
+const { genMessage } = require('./utils/message')
 
 //Connecting Server
 const app = express()
@@ -28,11 +28,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('newUser', 'A New User Has Joined!')
 
 
-    socket.emit('message', {
-            text: 'Welcome!',
-            createdAt: new Date().getTime()
-
-        })
+    socket.emit('message', genMessage('Hola!'))
         //Reciveing Increment from client side
     socket.on('increment', () => {
             count++
@@ -52,7 +48,7 @@ io.on('connection', (socket) => {
             return io.emit('message', 'Hey No Swearing!')
         }
         message = message + "\n"
-        io.emit('message', message)
+        io.emit('message', genMessage(message))
 
         callback('Received Message On Server')
 
