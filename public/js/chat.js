@@ -34,6 +34,8 @@ let fullScript = ''
 socket.on('message', (send) => {
     fullScript = fullScript + send + '<br>'
     messageDisplay.innerHTML = fullScript
+    const date = new Date()
+    console.log(date.getHours() - 12 + ':' + date.getMinutes())
 })
 
 socket.on('locationMessage', (location) => {
@@ -41,6 +43,8 @@ socket.on('locationMessage', (location) => {
     messageDisplay.innerHTML = fullScript
     console.log(location)
 })
+
+
 
 document.querySelector('#sendLocation').addEventListener('click', () => {
     if (!navigator.geolocation)
@@ -68,12 +72,17 @@ document.querySelector('#increment').addEventListener('click', () => {
 
 const messageForm = document.querySelector('#messageForm')
 const messageFormButton = messageForm.querySelector('button')
+const send = document.querySelector('#text')
+
+socket.on('clearTextBox', () => {
+    send.value = ''
+})
 
 document.querySelector('#messageForm').addEventListener('submit', (e) => {
     e.preventDefault()
     messageFormButton.setAttribute('disabled', 'disabled')
     messageFormButton.removeAttribute('disabled')
-    const send = document.querySelector('#text')
+
 
 
     if (send.value != '') {

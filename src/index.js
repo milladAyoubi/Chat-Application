@@ -26,6 +26,13 @@ io.on('connection', (socket) => {
         //Sending event to client 
     socket.emit('welcomeMessage', message)
     socket.broadcast.emit('newUser', 'A New User Has Joined!')
+
+
+    socket.emit('message', {
+            text: 'Welcome!',
+            createdAt: new Date().getTime()
+
+        })
         //Reciveing Increment from client side
     socket.on('increment', () => {
             count++
@@ -39,10 +46,14 @@ io.on('connection', (socket) => {
         const filter = new Filter()
 
 
-        if (filter.isProfane(message))
+        if (filter.isProfane(message)) {
+
+            io.emit('clearTextBox')
             return io.emit('message', 'Hey No Swearing!')
+        }
         message = message + "\n"
         io.emit('message', message)
+
         callback('Received Message On Server')
 
     })
