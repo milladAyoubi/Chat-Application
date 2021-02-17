@@ -49,7 +49,8 @@ io.on('connection', (socket) => {
 
 
     socket.on('location', (coords) => {
-        io.emit('leftUser', 'Location -> Lat: ' + coords.latitude + ' Long: ' + coords.latitude)
+        io.emit('locationMessage', 'https://google.com/maps?q=' + coords.latitude + ',' + coords.longitude)
+
     })
 
     socket.on('disconnect', () => {

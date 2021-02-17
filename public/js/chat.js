@@ -21,6 +21,10 @@ socket.on('leftUser', (message) => {
 
 })
 
+socket.on('locationMessage', (location) => {
+    console.log(location)
+})
+
 socket.on('welcomeMessage', (message) => {
     const title = document.querySelector('#title')
     title.innerHTML = message
@@ -45,6 +49,7 @@ document.querySelector('#sendLocation').addEventListener('click', () => {
         socket.emit('location', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
+
         })
     })
 
