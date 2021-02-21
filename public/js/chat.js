@@ -39,7 +39,7 @@ socket.on('message', (send) => {
 })
 
 socket.on('locationMessage', (location) => {
-    fullScript = fullScript + location + '<br>'
+    fullScript = fullScript + moment(location.createdAt).format('h:mm A') + ' - ' + location.msg + '<br>'
     messageDisplay.innerHTML = fullScript
     console.log(location)
 })
