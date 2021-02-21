@@ -20,15 +20,25 @@
 
 .messageDisplay {
     text-align: left;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.messageForm {
+    width: 100%;
+    border: 2px solid black;
 }
 
 .input1 {
-    position: relative;
-    top: 10%;
+    position: absolute;
+    top: 180%;
+    left: 0;
 }
 
 .input1 input {
-    border-radius: 20px;
+    border-radius: 5px;
+    padding: 5px;
     border: none;
 }
 
