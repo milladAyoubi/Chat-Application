@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
         if (filter.isProfane(message)) {
 
             io.emit('clearTextBox')
-            return io.emit('message', 'Hey No Swearing!')
+            return io.emit('message', genMessage('Hey No Swearing!'))
         }
         message = message + "\n"
         io.emit('message', genMessage(message))

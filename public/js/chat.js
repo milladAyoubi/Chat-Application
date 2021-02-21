@@ -32,7 +32,7 @@ const messageDisplay = document.querySelector('#messageDisplay')
 let fullScript = ''
 
 socket.on('message', (send) => {
-    fullScript = fullScript + moment(send.createdAt).format('h:m A') + ' - ' + send.msg + '<br>'
+    fullScript = fullScript + moment(send.createdAt).format('h:mm A') + ' - ' + send.msg + '<br>'
     messageDisplay.innerHTML = fullScript
     const date = new Date()
     console.log(date.getHours() - 12 + ':' + date.getMinutes())
