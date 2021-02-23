@@ -8,55 +8,27 @@
     <title>Chat-Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <div class="app">
-        <section class="main">
-            <div>
-                <div>
-                    <h1 id="title"></h1>
-                    <h4 style="color:rgb(17, 248, 140)" id="userDisplay"></h4>
+    <div class="centerForm">
+        <div class="centerFormBox">
 
 
-                </div>
-                <div>
-                    <!-- <button class="btn btn-primary" id="increment">
-                    Click
-                </button> -->
-                    <p id="countDisplay"></p>
 
-                </div>
-            </div>
-            <div class="messageDisplay" id="messageDisplay">
-
+            <div class="form-group">
+                <label>Chat Room Name</label>
+                <input type="text" name="username" placeholder="Display Name!" class="form-control" required>
+                <br> <label>Room</label>
+                <input type="text" name="room" placeholder="Room!" class="form-control" required>
+                <br><button class=" btn btn-primary">Join</button>
             </div>
 
 
 
-            <div class="input1">
 
-                <form id="messageForm">
-                    <input id="text">
-                    <button class="btn btn-info">Send</button>
-                    <button class="btn btn-primary" id="sendLocation">Share location</button>
-
-                </form>
-
-            </div>
-        </section>
-    </div>
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-
-
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script src="js/chat.js"></script>
+        </div>
 
 </body>
 
