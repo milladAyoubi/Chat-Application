@@ -31,10 +31,16 @@ io.on('connection', (socket) => {
     socket.emit('message', genMessage('Hola!'))
         //Reciveing Increment from client side
     socket.on('increment', () => {
-            count++
-            socket.emit('countUpdated', count)
+        count++
+        socket.emit('countUpdated', count)
 
 
+
+    })
+
+
+    //Recieves paraments for Username and which Room user joined
+    socket.on('join', ({ username, room }) => {
 
         })
         //Receiveing, Confirming and Displaying User messages sent from client
@@ -63,6 +69,8 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         io.emit('leftUser', 'A User Has Left!')
     })
+
+
 })
 
 
