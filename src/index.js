@@ -39,9 +39,12 @@ io.on('connection', (socket) => {
     })
 
 
-    //Recieves paraments for Username and which Room user joined
+    //Recieves paraments for Username and which Room user wants to join 
     socket.on('join', ({ username, room }) => {
+            socket.join(room)
 
+            socket.emit('message', genMessage('Welcome To The Chat!'))
+            socket.broadcast.to(room).emit('message', genMessage(username + ' has Joined!'))
         })
         //Receiveing, Confirming and Displaying User messages sent from client
     socket.on('messageSent', (message, callback) => {
@@ -54,7 +57,7 @@ io.on('connection', (socket) => {
             return io.emit('message', genMessage('Hey No Swearing!'))
         }
         message = message + "\n"
-        io.emit('message', genMessage(message))
+        io.to('ChatRoom').emit('message', genMessage(message))
 
         callback('Received Message On Server')
 
