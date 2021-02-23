@@ -2,9 +2,14 @@
 
 
 
+
+
+
+
 const socket = io()
 
 
+console.log(Qs.parse(location.search, { ignoreQueryPrefix: true }));
 //Elements 
 
 socket.on('countUpdated', (count) => {
@@ -102,5 +107,3 @@ document.querySelector('#messageForm').addEventListener('submit', (e) => {
     }
 
 })
-
-qs.parse(send)
