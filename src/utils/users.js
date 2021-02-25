@@ -17,4 +17,14 @@ const addUser = ({ userId, userName, chatRoom }) => {
             error: 'UserName and Room are Required!'
         }
     }
+
+    //Check if user exists
+    const eUser = users.find((user) => {
+        return user.chatRoom === chatRoom && user.username === userName
+    })
+    if (eUser) {
+        return {
+            error: 'Username is in use!'
+        }
+    }
 }
