@@ -35,6 +35,17 @@ const addUser = ({ userID, userName, chatRoom }) => {
 }
 
 
+//Remove User By Finding Index in Array By ID and Returning All User Except Selected
+const userRemove = (userID) => {
+    const userFind = users.findIndex((user) => {
+        return user.userID === userID
+    })
+
+    if (userFind != -1)
+        return users.splice(userFind, 1)[0]
+
+
+}
 
 addUser({
     userID: 22,
@@ -52,4 +63,8 @@ addUser({
 
 })
 
+
+
+//Testing 
 console.log(users)
+userRemove(22)
