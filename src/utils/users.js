@@ -6,15 +6,15 @@ const users = []
 
 
 
-const addUser = ({ userId, userName, chatRoom }) => {
+const addUser = ({ userID, userName, chatRoom }) => {
     userName = userName.trim().toLowerCase()
-    room = room.trim().toLowerCase()
+    chatRoom = chatRoom.trim().toLowerCase()
 
 
 
     if (!userName || !chatRoom) {
         return {
-            error: 'UserName and Room are Required!'
+            error: 'UserName anD Room are Required!'
         }
     }
 
@@ -27,4 +27,29 @@ const addUser = ({ userId, userName, chatRoom }) => {
             error: 'Username is in use!'
         }
     }
+    //storing user into the users array if there exist no other in the chat room
+    const user = { userID, userName, chatRoom }
+    users.push(user)
+    return { user }
+
 }
+
+
+
+addUser({
+    userID: 22,
+    userName: 'Millad',
+    chatRoom: 'TorontoRoom'
+
+})
+
+
+
+addUser({
+    userID: 23,
+    userName: 'Mihai',
+    chatRoom: 'TorontoRoom'
+
+})
+
+console.log(users)
