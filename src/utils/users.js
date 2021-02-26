@@ -47,6 +47,36 @@ const userRemove = (userID) => {
 
 }
 
+
+
+const getUser = (userID) => {
+    const findUser = users.find((user) => {
+        return user.userID === userID
+
+
+
+    })
+
+    if (findUser != undefined)
+        return findUser
+    else
+        return {
+            error: 'Username Dose Not Exists!'
+        }
+
+
+
+
+}
+
+const getUsersRoom = (room) => {
+    const userRoom = users.filter((user) => {
+        return user.chatRoom === room
+    })
+
+    return userRoom
+}
+
 addUser({
     userID: 22,
     userName: 'Millad',
@@ -63,8 +93,20 @@ addUser({
 
 })
 
+addUser({
+    userID: 24,
+    userName: 'Micheal',
+    chatRoom: 'CoolRoom'
+
+})
+
 
 
 //Testing 
 console.log(users)
-userRemove(22)
+
+const user = getUser(23)
+const num = getUsersRoom('torontoroom')
+console.log(user)
+console.log(num)
+console.log('Number of Users In Room is ' + num.length)
