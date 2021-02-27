@@ -42,7 +42,7 @@ io.on('connection', (socket) => {
 
     //Recieves paraments for Username and which Room user wants to join 
     socket.on('join', ({ username, room }, callback) => {
-            const { error, user } = addUsers({ userID: socket.userID, userName: username, chatRoom: room })
+            const { error, user } = addUsers({ userID: socket.id, userName: username, chatRoom: room })
 
             if (error) {
                 return callback(error)
@@ -80,7 +80,11 @@ io.on('connection', (socket) => {
     })
 
     socket.on('disconnect', () => {
-        io.emit('leftUser', 'A User Has Left!')
+
+        const userLeft = userRemove(socket.id)
+        console.log(userLeft)
+        if (userLeft)
+            socket.broadcast.to('ChatRoom').emit('message', genMessage('Oh No ' + userLeft.userName + ' has left!'))
     })
 
 

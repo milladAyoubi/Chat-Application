@@ -7,8 +7,8 @@ const users = []
 
 
 const addUsers = ({ userID, userName, chatRoom }) => {
-    userName = userName.trim().toLowerCase()
-    chatRoom = chatRoom.trim().toLowerCase()
+    userName = userName.trim()
+    chatRoom = chatRoom.trim()
 
 
 
