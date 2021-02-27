@@ -6,7 +6,7 @@ const users = []
 
 
 
-const addUser = ({ userID, userName, chatRoom }) => {
+const addUsers = ({ userID, userName, chatRoom }) => {
     userName = userName.trim().toLowerCase()
     chatRoom = chatRoom.trim().toLowerCase()
 
@@ -77,7 +77,7 @@ const getUsersRoom = (room) => {
     return userRoom
 }
 
-addUser({
+addUsers({
     userID: 22,
     userName: 'Millad',
     chatRoom: 'TorontoRoom'
@@ -86,14 +86,14 @@ addUser({
 
 
 
-addUser({
+addUsers({
     userID: 23,
     userName: 'Mihai',
     chatRoom: 'TorontoRoom'
 
 })
 
-addUser({
+addUsers({
     userID: 24,
     userName: 'Micheal',
     chatRoom: 'CoolRoom'
@@ -103,6 +103,7 @@ addUser({
 
 
 //Testing 
+/*
 console.log(users)
 
 const user = getUser(23)
@@ -110,3 +111,12 @@ const num = getUsersRoom('torontoroom')
 console.log(user)
 console.log(num)
 console.log('Number of Users In Room is ' + num.length)
+*/
+
+
+module.exports = {
+    addUsers,
+    userRemove,
+    getUser,
+    getUsersRoom
+}

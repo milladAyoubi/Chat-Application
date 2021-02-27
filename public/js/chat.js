@@ -10,6 +10,7 @@ const socket = io()
 
 
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+console.log(username, room)
     //Elements 
 
 socket.on('countUpdated', (count) => {
@@ -111,6 +112,6 @@ document.querySelector('#messageForm').addEventListener('submit', (e) => {
 
 
 //Sending Username and Room parameters 
-socket.emit('join', { username, room }, () => {
+socket.emit('join', { username, room }, (error) => {
 
 })
