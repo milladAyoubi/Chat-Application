@@ -4,6 +4,7 @@ const express = require('express')
 const socketio = require('socket.io')
 const Filter = require('bad-words')
 const { genMessage } = require('./utils/message')
+const { addUser, userRemove, getUser, getUsersRoom } = require('./utils/users')
 
 //Connecting Server
 const app = express()
@@ -41,7 +42,14 @@ io.on('connection', (socket) => {
 
     //Recieves paraments for Username and which Room user wants to join 
     socket.on('join', ({ username, room }) => {
-            socket.join(room)
+            const { error, user } = addUser({ userID: socket.userID, username, room })
+
+            if (error) {
+
+            }
+
+
+
 
             socket.emit('message', genMessage('Welcome To The Chat!'))
             socket.broadcast.to(room).emit('message', genMessage(username + ' has Joined!'))

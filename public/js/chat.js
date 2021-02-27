@@ -111,4 +111,6 @@ document.querySelector('#messageForm').addEventListener('submit', (e) => {
 
 
 //Sending Username and Room parameters 
-socket.emit('join', { username, room })
+socket.emit('join', { username, room }, () => {
+
+})
