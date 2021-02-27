@@ -84,7 +84,7 @@ io.on('connection', (socket) => {
         const userLeft = userRemove(socket.id)
         console.log(userLeft)
         if (userLeft)
-            socket.broadcast.to('ChatRoom').emit('message', genMessage('Oh No ' + userLeft.userName + ' has left!'))
+            io.to(userLeft.chatRoom).emit('message', genMessage('Oh No ' + userLeft.userName + ' has left!'))
     })
 
 
