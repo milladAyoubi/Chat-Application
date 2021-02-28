@@ -20,17 +20,22 @@ const addUsers = ({ userID, userName, chatRoom }) => {
 
     //Check if user exists
     const eUser = users.find((user) => {
-        return user.chatRoom === chatRoom && user.username === userName
+        return user.chatRoom === chatRoom && user.userName === userName
+
+
     })
     if (eUser) {
+
         return {
-            error: 'Username is in use!'
+            error: 'User Already Exists In Room!'
         }
+
     }
     //storing user into the users array if there exist no other in the chat room
     const user = { userID, userName, chatRoom }
     users.push(user)
     return { user }
+
 
 }
 

@@ -113,5 +113,9 @@ document.querySelector('#messageForm').addEventListener('submit', (e) => {
 
 //Sending Username and Room parameters 
 socket.emit('join', { username, room }, (error) => {
+    if (error) {
+        alert(error)
+        location.href = '/'
+    }
 
 })
