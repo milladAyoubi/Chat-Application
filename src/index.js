@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
 
             socket.emit('message', genMessage('Unova Chat', 'Welcome To The Chat!'))
 
-            socket.broadcast.to(room).emit('message', genMessage('Unova ', user.username + ' has Joined!'))
+            socket.broadcast.to(room).emit('message', genMessage('Unova ', user.userName + ' has Joined!'))
             callback()
         })
         //Receiveing, Confirming and Displaying User messages sent from client
