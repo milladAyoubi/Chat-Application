@@ -58,6 +58,7 @@ io.on('connection', (socket) => {
         })
         //Receiveing, Confirming and Displaying User messages sent from client
     socket.on('messageSent', (message, callback) => {
+        const user = getUser(socket.id)
         const filter = new Filter()
 
 
@@ -67,7 +68,7 @@ io.on('connection', (socket) => {
             return io.emit('message', genMessage('Hey No Swearing!'))
         }
         message = message + "\n"
-        io.to('ChatRoom').emit('message', genMessage(message))
+        io.to(user.chatRoom).emit('message', genMessage(message))
 
         callback('Received Message On Server')
 
@@ -75,7 +76,8 @@ io.on('connection', (socket) => {
 
 
     socket.on('location', (coords) => {
-        io.emit('locationMessage', genMessage('https://google.com/maps?q=' + coords.latitude + ',' + coords.longitude))
+        const user = getUser(socket.id)
+        io.to(user.chatRoom).emit('locationMessage', genMessage('https://google.com/maps?q=' + coords.latitude + ',' + coords.longitude))
 
     })
 
