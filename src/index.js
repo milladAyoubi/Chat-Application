@@ -3,7 +3,7 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const Filter = require('bad-words')
-const { genMessage } = require('./utils/message')
+const { genMessage, MessageLocation } = require('./utils/message')
 const { addUsers, userRemove, getUser, getUsersRoom } = require('./utils/users')
 
 //Connecting Server
@@ -29,8 +29,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('newUser', 'A New User Has Joined!')
 
 
-    socket.emit('message', genMessage('Hola!'))
-        //Reciveing Increment from client side
+    //Reciveing Increment from client side
     socket.on('increment', () => {
         count++
         socket.emit('countUpdated', count)
@@ -51,9 +50,9 @@ io.on('connection', (socket) => {
 
             socket.join(room)
 
-            socket.emit('message', genMessage('Welcome To The Chat!'))
+            socket.emit('message', genMessage('Unova Chat', 'Welcome To The Chat!'))
 
-            socket.broadcast.to(room).emit('message', genMessage(username + ' has Joined!'))
+            socket.broadcast.to(room).emit('message', genMessage('Unova ', user.username + ' has Joined!'))
             callback()
         })
         //Receiveing, Confirming and Displaying User messages sent from client
@@ -68,7 +67,7 @@ io.on('connection', (socket) => {
             return io.emit('message', genMessage('Hey No Swearing!'))
         }
         message = message + "\n"
-        io.to(user.chatRoom).emit('message', genMessage(message))
+        io.to(user.chatRoom).emit('message', genMessage(user.userName, message))
 
         callback('Received Message On Server')
 
@@ -77,7 +76,7 @@ io.on('connection', (socket) => {
 
     socket.on('location', (coords) => {
         const user = getUser(socket.id)
-        io.to(user.chatRoom).emit('locationMessage', genMessage('https://google.com/maps?q=' + coords.latitude + ',' + coords.longitude))
+        io.to(user.chatRoom).emit('locationMessage', MessageLocation(user.userName, 'https://google.com/maps?q=' + coords.latitude + ',' + coords.longitude))
 
     })
 

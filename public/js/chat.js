@@ -40,14 +40,14 @@ const messageDisplay = document.querySelector('#messageDisplay')
 let fullScript = ''
 
 socket.on('message', (send) => {
-    fullScript = fullScript + moment(send.createdAt).format('h:mm A') + ' - ' + send.msg + '<br>'
+    fullScript = fullScript + send.user + ' - ' + moment(send.createdAt).format('h:mm A') + ' <br> ' + send.msg + '<br>'
     messageDisplay.innerHTML = fullScript
     const date = new Date()
     console.log(date.getHours() - 12 + ':' + date.getMinutes())
 })
 
 socket.on('locationMessage', (location) => {
-    fullScript = fullScript + moment(location.createdAt).format('h:mm A') + ' - ' + location.msg + '<br>'
+    fullScript = fullScript + location.user + ' - ' + moment(location.createdAt).format('h:mm A') + '<br>' + location.location + '</a>' + '<br>'
     messageDisplay.innerHTML = fullScript
     console.log(location)
 })
