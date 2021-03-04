@@ -39,17 +39,34 @@ socket.on('welcomeMessage', (message) => {
 const messageDisplay = document.querySelector('#messageDisplay')
 let fullScript = ''
 
+// Scroll Feature For Displayd Messages
+const scroll = () => {
+
+    const height = messageDisplay.offsetHeight
+
+    const container = messageDisplay.scrollHeight
+
+
+    messageDisplay.scrollTo(0, container)
+
+
+
+    console.log(container)
+
+}
 socket.on('message', (send) => {
     fullScript = fullScript + '<br>' + send.user + ' - ' + moment(send.createdAt).format('h:mm A') + ' <br> ' + send.msg + '<br>'
     messageDisplay.innerHTML = fullScript
     const date = new Date()
     console.log(date.getHours() - 12 + ':' + date.getMinutes())
+    scroll()
 })
 
 socket.on('locationMessage', (location) => {
     fullScript = fullScript + location.user + ' - ' + moment(location.createdAt).format('h:mm A') + '<br>' + location.location + '</a>' + '<br>'
     messageDisplay.innerHTML = fullScript
     console.log(location)
+    scroll()
 })
 
 
