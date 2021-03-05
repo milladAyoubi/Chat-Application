@@ -58,6 +58,12 @@
         color: rgb(255, 86, 56)
     }
     
+    @media only screen and (min-width: 1700px) {
+        .main {
+            width: 40%;
+        }
+    }
+    
     @media only screen and (max-width: 500px) {
         .app {
             background-image: url("images/unovaMobile.png");
