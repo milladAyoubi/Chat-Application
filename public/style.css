@@ -14,15 +14,15 @@
     margin: 0 auto;
     border-radius: 20px;
     position: relative;
-    width: 600px;
-    height: 300px;
+    width: 45%;
+    height: 50%;
 }
 
 .messageDisplay {
     text-align: left;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.04);
     border-radius: 5px;
+    height: 70%;
     margin-bottom: 16px;
     padding: 10px;
     overflow: hidden;
@@ -44,7 +44,7 @@
 
 .input1 {
     position: absolute;
-    top: 180%;
+    bottom: 0;
     left: 0;
 }
 
@@ -56,4 +56,10 @@
 
 .leave {
     color: rgb(255, 86, 56)
+}
+
+@media only screen and (max-width: 860px) {
+    body {
+        background-color: lightblue;
+    }
 }
