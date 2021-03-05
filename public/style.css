@@ -58,8 +58,8 @@
     color: rgb(255, 86, 56)
 }
 
-@media only screen and (max-width: 860px) {
-    body {
-        background-color: lightblue;
+@media only screen and (max-width: 500px) {
+    .app {
+        background-image: url("images/unovaMobile.png");
     }
 }
