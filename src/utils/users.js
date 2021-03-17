@@ -4,8 +4,6 @@ const users = []
 
 //Adding and Removing User From Each Room and keeping track of all Users in specific room 
 
-
-
 const addUsers = ({ userID, userName, chatRoom }) => {
     userName = userName.trim()
     chatRoom = chatRoom.trim()
@@ -104,19 +102,6 @@ addUsers({
     chatRoom: 'CoolRoom'
 
 })
-
-
-
-//Testing 
-/*
-console.log(users)
-
-const user = getUser(23)
-const num = getUsersRoom('torontoroom')
-console.log(user)
-console.log(num)
-console.log('Number of Users In Room is ' + num.length)
-*/
 
 
 module.exports = {

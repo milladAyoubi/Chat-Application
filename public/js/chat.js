@@ -1,17 +1,8 @@
-//Client Logs countUpdated Event From Server
-
-
-
-
-
-
-
 const socket = io()
 
 
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 console.log(username, room)
-    //Elements 
 
 socket.on('countUpdated', (count) => {
     console.log('Count has been updated', count)
@@ -85,15 +76,6 @@ document.querySelector('#sendLocation').addEventListener('click', () => {
     })
 
 })
-
-/*const display = document.querySelector('#countDisplay')
-
-//Button That Initiates Serverside and Client Side Exchange
-document.querySelector('#increment').addEventListener('click', () => {
-    console.log('Clicked')
-        //Runs incremen ement')
-
-})*/
 
 const messageForm = document.querySelector('#messageForm')
 const messageFormButton = messageForm.querySelector('button')
