@@ -64,7 +64,7 @@ io.on('connection', (socket) => {
         if (filter.isProfane(message)) {
 
             io.emit('clearTextBox')
-            return io.emit('message', genMessage('Hey No Swearing!'))
+            return io.emit('message', genMessage('Unova', 'Hey No Swearing!'))
         }
         message = message + "\n"
         io.to(user.chatRoom).emit('message', genMessage(user.userName, message))
