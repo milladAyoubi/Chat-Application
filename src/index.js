@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
 
             socket.join(room)
 
-            socket.emit('message', genMessage('Unova Chat', 'Welcome To The Chat!'))
+            socket.emit('message', genMessage('Unova ', 'Welcome To The Chat!'))
 
             socket.broadcast.to(room).emit('message', genMessage('Unova ', user.userName + ' has Joined!'))
             callback()
@@ -85,7 +85,7 @@ io.on('connection', (socket) => {
         const userLeft = userRemove(socket.id)
         console.log(userLeft)
         if (userLeft)
-            io.to(userLeft.chatRoom).emit('message', genMessage('Oh No ' + userLeft.userName + ' has left!'))
+            socket.broadcast.to(userLeft.chatRoom).emit('message', genMessage('Unova ', userLeft.userName + ' has left!'))
     })
 
 
