@@ -1,4 +1,7 @@
-Unova Chat
+# Unova Chat Back End Application
+
+<h1> Description </h2>
+
 Unova Chat is a real-time chat application built with Node.js, Express.js, HTML, CSS, JavaScript, and Socket.io. With Unova Chat, users can join a specific room and exchange messages with others in the same room. The application also allows users to share their virtual location with one another.
 
 Features
